@@ -1,6 +1,6 @@
 # PruebaLinktic
 Proyecto que contieene los servicios de Productos e Inventario
-# Sistema de Gestión de Microservicios: Productos e Inventarios
+# Microservicios: Productos e Inventarios
 
 Este proyecto consiste en una arquitectura de microservicios diseñada para gestionar un catálogo de productos y su stock correspondiente, implementando comunicación inter-servicios, seguridad mediante API Key y persistencia de datos.
 
@@ -76,10 +76,10 @@ Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"applicatio
 
 El sistema sigue un patrón de **Microservicios Desacoplados** con las siguientes características:
 
-* [cite_start]**Microservicio de Productos:** Actúa como el catálogo maestro de la aplicación[cite: 7].
-* [cite_start]**Microservicio de Inventario:** Gestiona las existencias y depende del catálogo de productos para validar la integridad de los datos.
-* [cite_start]**Comunicación:** Se realiza de forma sincrónica mediante `RestTemplate` para validaciones en tiempo real entre servicios.
-* [cite_start]**Seguridad:** Implementación de un `OncePerRequestFilter` personalizado que valida una `X-API-KEY` en las cabeceras de las peticiones.
+* **Microservicio de Productos:** Actúa como el catálogo maestro de la aplicación.
+* **Microservicio de Inventario:** Gestiona las existencias y depende del catálogo de productos para validar la integridad de los datos.
+* **Comunicación:** Se realiza de forma sincrónica mediante `RestTemplate` para validaciones en tiempo real entre servicios.
+* **Seguridad:** Implementación de un `OncePerRequestFilter` personalizado que valida una `X-API-KEY` en las cabeceras de las peticiones.
 
 
 
@@ -89,11 +89,11 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 
 | Decisión | Justificación |
 | :--- | :--- |
-| **Spring Boot 3.4.1 / 4.0.1** | Uso de las versiones más recientes para aprovechar mejoras en rendimiento. [cite_start]Se implementó `@MockitoBean` para compatibilidad con el nuevo sistema de pruebas[cite: 7]. |
-| **Base de Datos H2 (Tests)** | [cite_start]Se configuró un perfil de `test` con base de datos en memoria para garantizar que las pruebas sean independientes del entorno local[cite: 11, 13]. |
+| **Spring Boot 3.4.1 / 4.0.1** | Uso de las versiones más recientes para aprovechar mejoras en rendimiento. Se implementó `@MockitoBean` para compatibilidad con el nuevo sistema de pruebas. |
+| **Base de Datos H2 (Tests)** | [cite_start]Se configuró un perfil de `test` con base de datos en memoria para garantizar que las pruebas sean independientes del entorno local. |
 | **Manejo Global de Excepciones** | [cite_start]Implementación de `@RestControllerAdvice` para estandarizar las respuestas de error y evitar fugas de trazas internas. |
-| **Estrategia de Pruebas** | Cobertura de **Happy Paths** y **Edge Cases**. [cite_start]Se priorizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`[cite: 23, 24]. |
-| **SLF4J para Logging** | [cite_start]Uso de logs profesionales de nivel `INFO` y `ERROR` para facilitar la auditoría en lugar de impresiones por consola estándar[cite: 22, 23]. |
+| **Estrategia de Pruebas** | Cobertura de **Happy Paths** y **Edge Cases**. [cite_start]Se priorizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`. |
+| **SLF4J para Logging** | [cite_start]Uso de logs profesionales de nivel `INFO` y `ERROR` para facilitar la auditoría en lugar de impresiones por consola estándar. |
 
 ---
 
