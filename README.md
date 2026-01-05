@@ -16,7 +16,7 @@ Este proyecto consiste en una arquitectura de microservicios diseñada para gest
 Clonar el repositorio
 
 ### Paso 2: Lanzar el doker compose
-Abrir una terminal y ejecutar el siguiente comando:
+Abrir una terminal en la carpeta del proyecto, ejemplo: `C:\Users\Familia\Documents\PruebaLinktic>`y ejecutar el siguiente comando:
 ```bash
 docker-compose up -d
 ```
@@ -71,6 +71,12 @@ Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"applicatio
       "cantidad": 35
     }
   }
+
+### Ejecutar pruebas unitarias y de integracion
+Abrir una terminal en la carpeta de cada microservicio, ejemplo: `C:\Users\Familia\Documents\PruebaLinktic\inventario`y ejecutar el siguiente comando:
+```bash
+./mvnw test
+```
 ---
 
 ## 2. Descripción de la Arquitectura
@@ -93,7 +99,7 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 | **Spring Boot 3.4.1 / 4.0.1** | Uso de las versiones más recientes para aprovechar mejoras en rendimiento. Se implementó `@MockitoBean` para compatibilidad con el nuevo sistema de pruebas. |
 | **Base de Datos H2 (Tests)** | Se configuró un perfil de `test` con base de datos en memoria para garantizar que las pruebas sean independientes del entorno local. |
 | **Manejo Global de Excepciones** | Implementación de `@RestControllerAdvice` para estandarizar las respuestas de error y evitar fugas de trazas internas. |
-| **Estrategia de Pruebas** | Cobertura de **Happy Paths** y **Edge Cases**. [cite_start]Se priorizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`. |
+| **Estrategia de Pruebas** | Cobertura de caminos ideales y errores controlados. Se priorizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`. |
 | **SLF4J para Logging** | [cite_start]Uso de logs profesionales de nivel `INFO` y `ERROR` para facilitar la auditoría en lugar de impresiones por consola estándar. |
 
 ---
