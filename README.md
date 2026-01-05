@@ -10,14 +10,15 @@ Este proyecto consiste en una arquitectura de microservicios diseñada para gest
 * **Java 21** o superior.
 * **Maven 3.8+** (o usar el wrapper `./mvnw` incluido).
 * **MySQL** (para entorno de producción/desarrollo).
+* **Docker desktop** (para ejecutar el proyecto en docker compose).
 
 ### Paso 1: Configuración
-Clonar el repositorio y configurar las credenciales de base de datos en los archivos `application.properties` de cada carpeta.
+Clonar el repositorio
 
-### Paso 2: Compilación
-Ejecuta el siguiente comando en la raíz de cada microservicio:
+### Paso 2: Lanzar el doker compose
+Abrir una terminal y ejecutar el siguiente comando:
 ```bash
-./mvnw clean install -DskipTests
+docker-compose up -d
 ```
 
 ### Prueba Endpoints por medio de Postman
