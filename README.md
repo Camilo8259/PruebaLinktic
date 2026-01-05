@@ -4,6 +4,23 @@ Proyecto que contieene los servicios de Productos e Inventario
 
 Este proyecto consiste en una arquitectura de microservicios diseñada para gestionar un catálogo de productos y su stock correspondiente, implementando comunicación inter-servicios, seguridad mediante API Key y persistencia de datos.
 
+## 4. Instrucciones de Instalación y Ejecución
+
+### Requisitos Previos
+* **Java 21** o superior.
+* **Maven 3.8+** (o usar el wrapper `./mvnw` incluido).
+* **MySQL** (para entorno de producción/desarrollo).
+
+### Paso 1: Configuración
+Clonar el repositorio y configurar las credenciales de base de datos en los archivos `application.properties` de cada carpeta.
+
+### Paso 2: Compilación
+Ejecuta el siguiente comando en la raíz de cada microservicio:
+```bash
+./mvnw clean install -DskipTests
+
+---
+
 ## 1. Descripción de la Arquitectura
 
 El sistema sigue un patrón de **Microservicios Desacoplados** con las siguientes características:
@@ -84,17 +101,4 @@ Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"applicatio
 
 ---
 
-## 4. Instrucciones de Instalación y Ejecución
 
-### Requisitos Previos
-* **Java 21** o superior.
-* **Maven 3.8+** (o usar el wrapper `./mvnw` incluido).
-* **MySQL** (para entorno de producción/desarrollo).
-
-### Paso 1: Configuración
-Clonar el repositorio y configurar las credenciales de base de datos en los archivos `application.properties` de cada carpeta.
-
-### Paso 2: Compilación
-Ejecuta el siguiente comando en la raíz de cada microservicio:
-```bash
-./mvnw clean install -DskipTests
