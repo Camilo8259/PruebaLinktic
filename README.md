@@ -96,7 +96,8 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 
 | Decisión | Justificación |
 | :--- | :--- |
-| **Spring Boot 3.4.1 / 4.0.1** | Uso de las versiones más recientes para aprovechar mejoras. |
+| **Spring Boot 3.4.1** | Uso de version estable de Springboot. |
+| **Base de Datos SQL)** | Se utilizo una base de tados SQL debido a que es la opcion mas adecuada que una base de datos NoSQL a la hora de manejar datos de productos e inventarios. Tambien se decarto guardar los datos en memoria debido a que en un proyecto real esta opcion no es utilizada entonces se prefirio utilizar de una vez la opcion mas adecuada. |
 | **Base de Datos H2 (Tests)** | Se configuró un perfil de `test` con base de datos en memoria para que las pruebas sean independientes del entorno local. |
 | **Manejo Global de Excepciones** | Implementación de `@RestControllerAdvice` para estandarizar las respuestas de error y evitar fugas de trazas internas. |
 | **Estrategia de Pruebas** | Cobertura de caminos ideales y errores controlados. Se realizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`. |
