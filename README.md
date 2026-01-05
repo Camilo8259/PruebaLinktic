@@ -36,12 +36,21 @@ Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"applicatio
 {"key":"X-API-KEY","value":"LinkticSecreto2026","description":"","type":"default","enabled":true}]`.
 
 ### Microservicio de Productos (Puerto 8081)
-* **GET** `/api/v1/productos`
+* **GET** `http://localhost:8001/api/v1/productos`
     * *Descripción:* Obtiene todos los productos.
-* **GET** `/api/v1/productos/{id}`
-    * *Descripción:* Obtiene un producto por su ID.
-* **POST** `/api/v1/productos`
-    * *Cuerpo (JSON:API):* `{"data": {"type": "productos", "attributes": {"nombre": "Laptop", "categoria": "Equipos", "precio": 1200.0}}}`
+* **GET** `http://localhost:8001/api/v1/productos/1`
+    * *Descripción:* Obtiene un producto por su ID, ejemplo Id:1.
+* **POST** `http://localhost:8001/api/v1/productos`
+    * *Cuerpo (JSON:API):* `{
+  "data": {
+    "type": "productos",
+    "attributes": {
+      "nombre": "Imac",
+      "precio": 7000000
+    }
+  }
+}`
+    * *Descripción:* Crear un producto.
 
 ### Microservicio de Inventario (Puerto 8082)
 * **GET** `/api/v1/inventarios/{productoId}`
