@@ -104,7 +104,7 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 
 ---
 
-## 3. Diagramas
+## 3. Diagrama de arquitectura e interacción entre servicios
 
 <img width="3092" height="2008" alt="Diagrama-PruebaLinktic" src="https://github.com/user-attachments/assets/0bb6a742-cd6d-4ec5-84a2-3a5b75e23d15" />
 
