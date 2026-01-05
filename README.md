@@ -20,7 +20,7 @@ Ejecuta el siguiente comando en la raíz de cada microservicio:
 ./mvnw clean install -DskipTests
 ```
 
-### Prueba Endpoints
+### Prueba Endpoints por medio de Postman
 Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"application/vnd.api+json","description":"","type":"default","enabled":true},
 {"key":"Content-Type","value":"application/vnd.api+json","description":"","type":"default","enabled":true},
 {"key":"X-API-KEY","value":"LinkticSecreto2026","description":"","type":"default","enabled":true}]`.
@@ -90,8 +90,8 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 | Decisión | Justificación |
 | :--- | :--- |
 | **Spring Boot 3.4.1 / 4.0.1** | Uso de las versiones más recientes para aprovechar mejoras en rendimiento. Se implementó `@MockitoBean` para compatibilidad con el nuevo sistema de pruebas. |
-| **Base de Datos H2 (Tests)** | [cite_start]Se configuró un perfil de `test` con base de datos en memoria para garantizar que las pruebas sean independientes del entorno local. |
-| **Manejo Global de Excepciones** | [cite_start]Implementación de `@RestControllerAdvice` para estandarizar las respuestas de error y evitar fugas de trazas internas. |
+| **Base de Datos H2 (Tests)** | Se configuró un perfil de `test` con base de datos en memoria para garantizar que las pruebas sean independientes del entorno local. |
+| **Manejo Global de Excepciones** | Implementación de `@RestControllerAdvice` para estandarizar las respuestas de error y evitar fugas de trazas internas. |
 | **Estrategia de Pruebas** | Cobertura de **Happy Paths** y **Edge Cases**. [cite_start]Se priorizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`. |
 | **SLF4J para Logging** | [cite_start]Uso de logs profesionales de nivel `INFO` y `ERROR` para facilitar la auditoría en lugar de impresiones por consola estándar. |
 
