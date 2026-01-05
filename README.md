@@ -96,11 +96,11 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 
 | Decisión | Justificación |
 | :--- | :--- |
-| **Spring Boot 3.4.1 / 4.0.1** | Uso de las versiones más recientes para aprovechar mejoras en rendimiento. Se implementó `@MockitoBean` para compatibilidad con el nuevo sistema de pruebas. |
-| **Base de Datos H2 (Tests)** | Se configuró un perfil de `test` con base de datos en memoria para garantizar que las pruebas sean independientes del entorno local. |
+| **Spring Boot 3.4.1 / 4.0.1** | Uso de las versiones más recientes para aprovechar mejoras. |
+| **Base de Datos H2 (Tests)** | Se configuró un perfil de `test` con base de datos en memoria para que las pruebas sean independientes del entorno local. |
 | **Manejo Global de Excepciones** | Implementación de `@RestControllerAdvice` para estandarizar las respuestas de error y evitar fugas de trazas internas. |
-| **Estrategia de Pruebas** | Cobertura de caminos ideales y errores controlados. Se priorizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`. |
-| **SLF4J para Logging** | Uso de logs profesionales de nivel `INFO` y `ERROR` para facilitar la auditoría en lugar de impresiones por consola estándar. |
+| **Estrategia de Pruebas** | Cobertura de caminos ideales y errores controlados. Se realizaron pruebas unitarias con Mockito y pruebas de integración con `MockMvc`. |
+| **SLF4J para Logging** | Uso de logs de nivel `INFO` y `ERROR` para facilitar la auditoría en lugar de impresiones por consola. |
 
 ---
 
