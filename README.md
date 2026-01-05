@@ -100,7 +100,6 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 ## 3. Diagramas
 
 
-}`
 
 ---
 
