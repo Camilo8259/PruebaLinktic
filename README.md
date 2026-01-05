@@ -29,9 +29,11 @@ El sistema sigue un patrón de **Microservicios Desacoplados** con las siguiente
 
 ---
 
-## 3. Catálogo de Endpoints (API Documentación)
+## 3. Endpoints
 
-Todos los endpoints requieren la cabecera: `X-API-KEY: LinkticSecreto2026`.
+Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"application/vnd.api+json","description":"","type":"default","enabled":true},
+{"key":"Content-Type","value":"application/vnd.api+json","description":"","type":"default","enabled":true},
+{"key":"X-API-KEY","value":"LinkticSecreto2026","description":"","type":"default","enabled":true}]`.
 
 ### Microservicio de Productos (Puerto 8081)
 * **GET** `/api/v1/productos`
