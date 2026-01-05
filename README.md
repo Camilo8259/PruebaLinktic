@@ -52,12 +52,35 @@ Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"applicatio
 }`
     * *Descripción:* Crear un producto.
 
+* **PATCH** `http://localhost:8001/api/v1/productos/4`
+    * *Cuerpo (JSON:API):* `{
+  "data": {
+    "type": "productos",
+    "id": "4",
+    "attributes": {
+      "nombre": "Imac",
+      "precio": 7100000
+    }
+  }
+}`
+    * *Descripción:* Actualizar un producto.
+
+* **DELETE** `http://localhost:8001/api/v1/productos/4`
+    * *Descripción:* Eliminar un producto. Ejemplo Id producto:4
+
 ### Microservicio de Inventario (Puerto 8082)
-* **GET** `/api/v1/inventarios/{productoId}`
-    * *Descripción:* Consulta el stock de un producto específico.
-* **PATCH** `/api/v1/inventarios/{productoId}`
-    * *Descripción:* Actualiza la cantidad en stock.
-    * *Cuerpo:* `{"data": {"type": "inventarios", "attributes": {"cantidad": 50}}}`
+* **GET** `http://localhost:8002/api/v1/inventarios/3`
+    * *Descripción:* Consulta el stock de un producto específico. Ejemplo Id producto:3.
+* **PATCH** `http://localhost:8002/api/v1/inventarios/3`
+    * *Descripción:* Actualiza la cantidad en stock. Ejemplo Id producto:3.
+    * *Cuerpo:* `{
+  "data": {
+    "type": "inventarios",
+    "attributes": {
+      "cantidad": 35
+    }
+  }
+}`
 
 ---
 
