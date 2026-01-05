@@ -1,0 +1,87 @@
+services:
+  # ----------------------------------------------------------------
+  # 1. BASE DE DATOS (MySQL)
+  # ----------------------------------------------------------------
+  db:
+    image: mysql:8.0
+    container_name: comercio
+    restart: always
+    environment:
+      MYSQL_DATABASE: comercio
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: password123
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql               # Persistencia de datos
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # Script de inicio
+    networks:
+      - app-network
+    # Comando para asegurar compatibilidad de autenticación
+    command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ----------------------------------------------------------------
+  # 2. MICROSERVICIO DE PRODUCTOS
+  # ----------------------------------------------------------------
+  products-service:
+    build:
+      context: ./productos
+      dockerfile: Dockerfile
+    container_name: ms_products
+    ports:
+      - "8001:8080" # Host:8001 -> Contenedor:8080 (Puerto default de Spring)
+    environment:
+      # Sobrescribimos la URL de la BD para usar el nombre del servicio 'db'
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/comercio?allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=password123
+      # Configuración específica de la app
+      - SERVER_PORT=8080
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  # ----------------------------------------------------------------
+  # 3. MICROSERVICIO DE INVENTARIO
+  # ----------------------------------------------------------------
+  inventory-service:
+    build:
+      context: ./inventario
+      dockerfile: Dockerfile
+    container_name: ms_inventory
+    ports:
+      - "8002:8080" # Host:8002 -> Contenedor:8080
+    environment:
+      # Conexión a BD
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/comercio?allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=password123
+      - SERVER_PORT=8080
+      # URL para conectar con el servicio de productos
+      # Nota: Usamos el nombre del servicio 'products-service' y el puerto INTERNO (8080)
+      - PRODUCTS_SERVICE_URL=http://products-service:8080
+    depends_on:
+      db:
+        condition: service_healthy
+      products-service:
+        condition: service_started
+    networks:
+      - app-network
+
+# ----------------------------------------------------------------
+# REDES Y VOLÚMENES
+# ----------------------------------------------------------------
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
