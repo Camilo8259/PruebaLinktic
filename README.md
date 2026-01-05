@@ -18,7 +18,7 @@ Clonar el repositorio y configurar las credenciales de base de datos en los arch
 Ejecuta el siguiente comando en la raíz de cada microservicio:
 ```bash
 ./mvnw clean install -DskipTests
-
+```
 ---
 
 ## 1. Descripción de la Arquitectura
