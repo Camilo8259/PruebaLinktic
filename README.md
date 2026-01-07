@@ -71,6 +71,7 @@ Todos los endpoints requieren la cabecera: `[{"key":"Accept","value":"applicatio
       "cantidad": 35
     }
   }
+}`
 
 ### Ejecutar pruebas unitarias y de integracion
 Abrir una terminal en la carpeta de cada microservicio, ejemplo: `C:\Users\Familia\Documents\PruebaLinktic\inventario`y ejecutar el siguiente comando:
