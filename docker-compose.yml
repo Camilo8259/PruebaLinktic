@@ -22,7 +22,7 @@ services:
 
   ms_products:
     image: camiloa82/ms_products:1.0
-    container_name: ms_products
+    container_name: ms-products
     ports:
       - "8001:8080"
     environment:
@@ -36,7 +36,7 @@ services:
 
   ms_inventory:
     image: camiloa82/ms_inventory:1.0
-    container_name: ms_inventory
+    container_name: ms-inventory
     ports:
       - "8002:8080"
     environment:
@@ -44,7 +44,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=password123
       - SERVER_PORT=8080
-      - PRODUCTS_SERVICE_URL=http://ms_products:8080
+      - PRODUCTS_SERVICE_URL=http://ms-products:8080
     depends_on:
       db:
         condition: service_healthy
